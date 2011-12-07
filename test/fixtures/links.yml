@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  url: MyString
+  status: 1
+  pauth: 1
+  dauth: 1
+
+two:
+  url: MyString
+  status: 1
+  pauth: 1
+  dauth: 1

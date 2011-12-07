@@ -41,7 +41,12 @@ class LinksController < ApplicationController
   # POST /links
   # POST /links.json
   def create
+    require 'uri'
     @link = Link.new(params[:link])
+    
+    uri = URI(params[:link][:url])
+    domain = Domain.create(:url => uri.host)
+    domain.save
 
     respond_to do |format|
       if @link.save

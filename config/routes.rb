@@ -1,4 +1,6 @@
 Linktool::Application.routes.draw do
+  resources :domains
+
   resources :links
 
   get "home/index"
@@ -52,7 +54,7 @@ Linktool::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'links#index'
+  root :to => 'domains#index'
 
   # See how all your routes lay out with "rake routes"
 

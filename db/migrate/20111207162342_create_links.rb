@@ -5,8 +5,11 @@ class CreateLinks < ActiveRecord::Migration
       t.integer :status
       t.integer :pauth
       t.integer :dauth
-
+      t.references :domain
+      
       t.timestamps
     end
+    
+    add_index :links, :domain_id
   end
 end

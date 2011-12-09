@@ -1,4 +1,8 @@
 Linktool::Application.routes.draw do
+  resources :customers
+
+  resources :users
+
   resources :domains
 
   resources :links

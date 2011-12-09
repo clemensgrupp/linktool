@@ -1,4 +1,6 @@
 class Domain < ActiveRecord::Base
-has_many :links
+validates :url, :uniqueness => true, :presence => true
+  
+has_many :links, :dependent => :destroy
 
 end

@@ -3,6 +3,8 @@ class DomainsController < ApplicationController
   # GET /domains.json
   def index
     @domains = Domain.all
+    
+    @link = Link.new
 
     respond_to do |format|
       format.html # index.html.erb

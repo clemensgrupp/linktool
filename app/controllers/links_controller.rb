@@ -42,15 +42,25 @@ class LinksController < ApplicationController
   # POST /links.json
   def create
     require 'uri'
-    @link = Link.new(params[:link])
+    
     
     uri = URI(params[:link][:url])
-    domain = Domain.create(:url => uri.host)
-    domain.save
-
+    host= uri.host
+    
+    if Domain.where(:url => host).empty?
+      domain = Domain.create(:url => host)
+      domain.save
+      
+    else
+      domain = Domain.where(:url => host).first
+    end
+    
+    @link = Link.new(params[:link])
+    @link.update_attributes(:domain_id => domain.id)
+    
     respond_to do |format|
       if @link.save
-        format.html { redirect_to @link, notice: 'Link was successfully created.' }
+        format.html { redirect_to domains_path, notice: 'Link was successfully created.' }
         format.json { render json: @link, status: :created, location: @link }
       else
         format.html { render action: "new" }

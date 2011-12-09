@@ -1,8 +1,14 @@
 <h1>Listing domains</h1>
+<%= render 'form2' %>
+
 
 <table>
   <tr>
     <th>Url</th>
+    <th>Link-Url</th>
+    <th>Status</th>
+    <th>Pauth</th>
+    <th>Dauth</th>
     <th></th>
     <th></th>
     <th></th>
@@ -11,10 +17,27 @@
 <% @domains.each do |domain| %>
   <tr>
     <td><%= domain.url %></td>
+   	<td></td>    
+   	<td></td>    
+   	<td></td>    
+   	<td></td>       	
     <td><%= link_to 'Show', domain %></td>
     <td><%= link_to 'Edit', edit_domain_path(domain) %></td>
     <td><%= link_to 'Destroy', domain, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
+  
+  <% domain.links.each do |link|%>
+    <tr>
+    <td></td>
+   	<td><%= link_to link.url[0..50] << '...', link.url %></td>    
+   	<td><%= link.status %></td>    
+   	<td><%= link.pauth %></td>    
+   	<td><%= link.dauth %></td>       	
+    <td><%= link_to 'Show', link %></td>
+    <td><%= link_to 'Edit', edit_link_path(link) %></td>
+    <td><%= link_to 'Destroy', link, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+  <% end %>
 <% end %>
 </table>
 
@@ -23,4 +46,4 @@
 <%= link_to 'New Domain', new_domain_path %>
 
 <%= link_to 'New Link', new_link_path %>
-<%= link_to ' Links', links_path %>
+<%= link_to ' New Customer', new_customer_path %>
